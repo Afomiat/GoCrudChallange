@@ -8,3 +8,7 @@ type Person struct {
 	Age int `json:"age" bson:"age"`
 	Hobbies []string `json:"hobbies" bson:"hobbies"`
 }
+
+type PersonRepository interface {
+	AddPerson(person Person) (Person, error)
+}

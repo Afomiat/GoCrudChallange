@@ -5,16 +5,17 @@ import(
 	"github.com/Afomiat/GoCrudChallange/Delivery/controllers"
 	"github.com/Afomiat/GoCrudChallange/Usecase"
 	"github.com/Afomiat/GoCrudChallange/Repository"
+	"github.com/Afomiat/GoCrudChallange/Database"
 )
 func SetupPersonRouter(router *gin.Engine) {
-	personRepo := Repository.NewSongRepoImplement(Database.personCollection)
-    personUsecase := Usecase.NewSongUsecase(personRepo)
-    personController := controllers.NewSongController(personUsecase)
+	personRepo := Repository.NewPersonRepoImplement(Database.PersonColletion)
+    personUsecase := Usecase.NewPersonUsecase(personRepo)
+    personController := controllers.NewPersonController(personUsecase)
 
-	personRouter := router.Group("/person")
-	personRouter.GET("/person", PersonController.GetPerson)
-	personRouter.GET("/person/:id", PersonController.GetPersonById)
-	personRouter.POST("/person", PersonController.CreatePerson)
-	personRouter.PUT("/person/:id", PersonController.UpdatePerson)
-	personRouter.DELETE("/person/:id", PersonController.DeletePerson)
+	personRoutes := router.Group("/person")
+	// personRouter.GET("/person", personController.GetPerson)
+	// personRouter.GET("/person/:id", personController.GetPersonById)
+	personRoutes.POST("", personController.AddPerson)
+	// personRouter.PUT("/person/:id", personController.UpdatePerson)
+	// personRouter.DELETE("/person/:id", personController.DeletePerson)
 }
