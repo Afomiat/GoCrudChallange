@@ -21,6 +21,9 @@ func (pu *PersonUsecase) AddPerson(person Domain.Person) error {
 
 		return errors.New("name, Age and Hobbies are required")
 	}
+	if person.Age <= 0 {
+		return errors.New("please enter valid age")
+	}
 
 	_, err := pu.PersonRepo.AddPerson(person)
 
@@ -37,6 +40,10 @@ func (pu *PersonUsecase) GetPersonById(id string) (Domain.Person, error){
 func (sc *PersonUsecase) UpdatePerson(id string, person Domain.Person) error{
 	if person.Name == "" || person.Age == 0 || person.Hobbies == nil {
 		return errors.New("missing required fields")
+	}
+
+	if person.Age <= 0 {
+		return errors.New("please enter valid age")
 	}
 	_,err := sc.PersonRepo.UpdatePerson(id, person)
 	return err

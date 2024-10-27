@@ -1,22 +1,28 @@
-# Go-crud-challenge
+# Go CRUD Challenge 🚀
 
-## Implement Simple CRUD API
+This project implements a RESTful API in Go for managing a collection of persons. It allows you to create, read, update, and delete person records stored in a MongoDB database.
 
-Your task is to implement simple CRUD API using in-memory database underneath.  
+## Features 🌟
+- **CRUD Operations**: Create, Read, Update, Delete person records.
+- **Properties**:
+  - `id`: Unique identifier (string, UUID)
+  - `name`: Person's name (string, required)
+  - `age`: Person's age (number, required)
+  - `hobbies`: Array of hobbies (strings, required)
 
-## Details:
+## Technologies 🛠️
+- Go (Golang)
+- Gin Gonic (web framework)
+- MongoDB (database)
+- Gorilla CORS (for cross-origin resource sharing)
 
-1. The task must be solved using only Go, or Go related framework
-2. API path `/person`:
-    * **GET** `/person` or `/person/${personId}` should return all persons or person with corresponding `personId`
-    * **POST** `/person` is used to create record about new person and store it in database
-    * **PUT** `/person/${personId}` is used to update record about existing person
-    * **DELETE** `/person/${personId}` is used to delete record about existing person from database
-3. Persons are stored as `objects` that have following properties:
-    * `id` — unique identifier (`string`, `uuid`) generated on server side
-    * `name` — person's name (`string`, **required**)
-    * `age` — person's age (`number`, **required**)
-    * `hobbies` — person's hobbies (`array` of `strings` or empty `array`, **required**)
-4. Requests to non-existing endpoints (e.g. `/some-non/existing/resource`) should be handled.
-5. Internal server errors should be handled and processed correctly.
-6. Make sure the api is accesible by frontend apps hosted on a different domain (cross-site resource sharing)
+## API Endpoints 🌐
+
+- **GET /person**: Retrieve all persons.
+- **GET /person/${personId}**: Retrieve a specific person by ID.
+- **POST /person**: Create a new person.
+- **PUT /person/${personId}**: Update an existing person.
+- **DELETE /person/${personId}**: Remove a person
+
+## CORS Support 🌍
+The API is accessible by frontend apps on different domains, with CORS enabled for specified origins.
