@@ -13,9 +13,9 @@ func SetupPersonRouter(router *gin.Engine) {
     personController := controllers.NewPersonController(personUsecase)
 
 	personRoutes := router.Group("/person")
-	// personRouter.GET("/person", personController.GetPerson)
-	// personRouter.GET("/person/:id", personController.GetPersonById)
+	personRoutes.GET("", personController.GetPersons)
+	personRoutes.GET("/:id", personController.GetPersonById)
 	personRoutes.POST("", personController.AddPerson)
-	// personRouter.PUT("/person/:id", personController.UpdatePerson)
-	// personRouter.DELETE("/person/:id", personController.DeletePerson)
+	personRoutes.PUT("/:id", personController.UpdatePerson)
+	personRoutes.DELETE(":id", personController.DeletePerson)
 }
